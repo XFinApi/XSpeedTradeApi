@@ -1085,6 +1085,9 @@ ErrNewUnPacker = cvar.ErrNewUnPacker
 ErrCacheFolderTooLong = cvar.ErrCacheFolderTooLong
 ErrExchangeRejectOrder = cvar.ErrExchangeRejectOrder
 ErrExchangeRejectCancelOrder = cvar.ErrExchangeRejectCancelOrder
+ErrAuthCode = cvar.ErrAuthCode
+ErrOrderCounterNo = cvar.ErrOrderCounterNo
+ErrNotSupport = cvar.ErrNotSupport
 
 class CodeInfo(_object):
     __swig_setmethods__ = {}
@@ -1237,6 +1240,13 @@ class Tick(_object):
     __swig_getmethods__ = {}
     __getattr__ = lambda self, name: _swig_getattr(self, Tick, name)
     __repr__ = _swig_repr
+
+    def __init__(self):
+        this = _XFinApi_TradeApi.new_Tick()
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
     __swig_destroy__ = _XFinApi_TradeApi.delete_Tick
     __del__ = lambda self: None
     __swig_setmethods__["InstrumentID"] = _XFinApi_TradeApi.Tick_InstrumentID_set
@@ -1459,13 +1469,6 @@ class Tick(_object):
 
     def SetAskVolume(self, idx: 'int', val: 'int64_t') -> "void":
         return _XFinApi_TradeApi.Tick_SetAskVolume(self, idx, val)
-
-    def __init__(self):
-        this = _XFinApi_TradeApi.new_Tick()
-        try:
-            self.this.append(this)
-        except __builtin__.Exception:
-            self.this = this
 Tick_swigregister = _XFinApi_TradeApi.Tick_swigregister
 Tick_swigregister(Tick)
 
@@ -2071,6 +2074,10 @@ class Order(_object):
     __swig_getmethods__["OrderLocalNo"] = _XFinApi_TradeApi.Order_OrderLocalNo_get
     if _newclass:
         OrderLocalNo = _swig_property(_XFinApi_TradeApi.Order_OrderLocalNo_get, _XFinApi_TradeApi.Order_OrderLocalNo_set)
+    __swig_setmethods__["OrderCounterNo"] = _XFinApi_TradeApi.Order_OrderCounterNo_set
+    __swig_getmethods__["OrderCounterNo"] = _XFinApi_TradeApi.Order_OrderCounterNo_get
+    if _newclass:
+        OrderCounterNo = _swig_property(_XFinApi_TradeApi.Order_OrderCounterNo_get, _XFinApi_TradeApi.Order_OrderCounterNo_set)
     __swig_setmethods__["Price"] = _XFinApi_TradeApi.Order_Price_set
     __swig_getmethods__["Price"] = _XFinApi_TradeApi.Order_Price_get
     if _newclass:
@@ -2147,14 +2154,6 @@ class Order(_object):
     __swig_getmethods__["PricePrecision"] = _XFinApi_TradeApi.Order_PricePrecision_get
     if _newclass:
         PricePrecision = _swig_property(_XFinApi_TradeApi.Order_PricePrecision_get, _XFinApi_TradeApi.Order_PricePrecision_set)
-    __swig_setmethods__["OrderSysID"] = _XFinApi_TradeApi.Order_OrderSysID_set
-    __swig_getmethods__["OrderSysID"] = _XFinApi_TradeApi.Order_OrderSysID_get
-    if _newclass:
-        OrderSysID = _swig_property(_XFinApi_TradeApi.Order_OrderSysID_get, _XFinApi_TradeApi.Order_OrderSysID_set)
-    __swig_setmethods__["CanceledVolume"] = _XFinApi_TradeApi.Order_CanceledVolume_set
-    __swig_getmethods__["CanceledVolume"] = _XFinApi_TradeApi.Order_CanceledVolume_get
-    if _newclass:
-        CanceledVolume = _swig_property(_XFinApi_TradeApi.Order_CanceledVolume_get, _XFinApi_TradeApi.Order_CanceledVolume_set)
 
     def __init__(self):
         this = _XFinApi_TradeApi.new_Order()
@@ -2323,6 +2322,18 @@ class Position(_object):
     __swig_getmethods__["ExchangeMargin"] = _XFinApi_TradeApi.Position_ExchangeMargin_get
     if _newclass:
         ExchangeMargin = _swig_property(_XFinApi_TradeApi.Position_ExchangeMargin_get, _XFinApi_TradeApi.Position_ExchangeMargin_set)
+    __swig_setmethods__["PositionTotal"] = _XFinApi_TradeApi.Position_PositionTotal_set
+    __swig_getmethods__["PositionTotal"] = _XFinApi_TradeApi.Position_PositionTotal_get
+    if _newclass:
+        PositionTotal = _swig_property(_XFinApi_TradeApi.Position_PositionTotal_get, _XFinApi_TradeApi.Position_PositionTotal_set)
+    __swig_setmethods__["PositionSellable"] = _XFinApi_TradeApi.Position_PositionSellable_set
+    __swig_getmethods__["PositionSellable"] = _XFinApi_TradeApi.Position_PositionSellable_get
+    if _newclass:
+        PositionSellable = _swig_property(_XFinApi_TradeApi.Position_PositionSellable_get, _XFinApi_TradeApi.Position_PositionSellable_set)
+    __swig_setmethods__["AvgPrice"] = _XFinApi_TradeApi.Position_AvgPrice_set
+    __swig_getmethods__["AvgPrice"] = _XFinApi_TradeApi.Position_AvgPrice_get
+    if _newclass:
+        AvgPrice = _swig_property(_XFinApi_TradeApi.Position_AvgPrice_get, _XFinApi_TradeApi.Position_AvgPrice_set)
 
     def __init__(self):
         this = _XFinApi_TradeApi.new_Position()
@@ -2369,10 +2380,10 @@ class Account(_object):
     __swig_getmethods__["Deposit"] = _XFinApi_TradeApi.Account_Deposit_get
     if _newclass:
         Deposit = _swig_property(_XFinApi_TradeApi.Account_Deposit_get, _XFinApi_TradeApi.Account_Deposit_set)
-    __swig_setmethods__["StaticRights"] = _XFinApi_TradeApi.Account_StaticRights_set
-    __swig_getmethods__["StaticRights"] = _XFinApi_TradeApi.Account_StaticRights_get
+    __swig_setmethods__["StaticBalance"] = _XFinApi_TradeApi.Account_StaticBalance_set
+    __swig_getmethods__["StaticBalance"] = _XFinApi_TradeApi.Account_StaticBalance_get
     if _newclass:
-        StaticRights = _swig_property(_XFinApi_TradeApi.Account_StaticRights_get, _XFinApi_TradeApi.Account_StaticRights_set)
+        StaticBalance = _swig_property(_XFinApi_TradeApi.Account_StaticBalance_get, _XFinApi_TradeApi.Account_StaticBalance_set)
     __swig_setmethods__["CloseProfit"] = _XFinApi_TradeApi.Account_CloseProfit_set
     __swig_getmethods__["CloseProfit"] = _XFinApi_TradeApi.Account_CloseProfit_get
     if _newclass:
@@ -2385,10 +2396,10 @@ class Account(_object):
     __swig_getmethods__["Commission"] = _XFinApi_TradeApi.Account_Commission_get
     if _newclass:
         Commission = _swig_property(_XFinApi_TradeApi.Account_Commission_get, _XFinApi_TradeApi.Account_Commission_set)
-    __swig_setmethods__["ChangingRights"] = _XFinApi_TradeApi.Account_ChangingRights_set
-    __swig_getmethods__["ChangingRights"] = _XFinApi_TradeApi.Account_ChangingRights_get
+    __swig_setmethods__["Balance"] = _XFinApi_TradeApi.Account_Balance_set
+    __swig_getmethods__["Balance"] = _XFinApi_TradeApi.Account_Balance_get
     if _newclass:
-        ChangingRights = _swig_property(_XFinApi_TradeApi.Account_ChangingRights_get, _XFinApi_TradeApi.Account_ChangingRights_set)
+        Balance = _swig_property(_XFinApi_TradeApi.Account_Balance_get, _XFinApi_TradeApi.Account_Balance_set)
     __swig_setmethods__["CurrMargin"] = _XFinApi_TradeApi.Account_CurrMargin_set
     __swig_getmethods__["CurrMargin"] = _XFinApi_TradeApi.Account_CurrMargin_get
     if _newclass:
@@ -2421,10 +2432,6 @@ class Account(_object):
     __swig_getmethods__["Available"] = _XFinApi_TradeApi.Account_Available_get
     if _newclass:
         Available = _swig_property(_XFinApi_TradeApi.Account_Available_get, _XFinApi_TradeApi.Account_Available_set)
-    __swig_setmethods__["Balance"] = _XFinApi_TradeApi.Account_Balance_set
-    __swig_getmethods__["Balance"] = _XFinApi_TradeApi.Account_Balance_get
-    if _newclass:
-        Balance = _swig_property(_XFinApi_TradeApi.Account_Balance_get, _XFinApi_TradeApi.Account_Balance_set)
     __swig_setmethods__["CurrencyNo"] = _XFinApi_TradeApi.Account_CurrencyNo_set
     __swig_getmethods__["CurrencyNo"] = _XFinApi_TradeApi.Account_CurrencyNo_get
     if _newclass:

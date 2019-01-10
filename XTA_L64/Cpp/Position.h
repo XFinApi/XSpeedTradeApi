@@ -46,6 +46,13 @@ namespace TradeApi
 
 		// 持仓交易所占用保证金
 		double ExchangeMargin = DOUBLE_DEFAULT;
+
+		// 总持仓
+		int64_t PositionTotal = 0;
+		// 可卖持仓
+		int64_t PositionSellable = 0;
+		// 持仓成本
+		double AvgPrice = 0;
     };
 }
 }

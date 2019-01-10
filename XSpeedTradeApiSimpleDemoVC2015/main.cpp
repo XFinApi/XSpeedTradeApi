@@ -80,7 +80,7 @@ public:
 
         //合约
 		ExchangeID = "CFFEX";
-		InstrumentID = "T1812";
+		InstrumentID = "T1903";
 	}
 };
 
