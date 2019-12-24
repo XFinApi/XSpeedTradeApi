@@ -73,10 +73,10 @@ public:
 		//注册XSpeed模拟账户:http://fit.dfitc.com.cn/fitcrm/applyAccount.seam
         
         //地址账户
-		MarketAddress = "203.187.171.250:10915";
-		TradeAddress = "203.187.171.250:10910";
-		UserName = "000300000649";//公用测试账户。为了测试准确，请注册使用您自己的账户。
-		Password = "a123456";
+		MarketAddress = "";
+		TradeAddress = "";
+		UserName = "";
+		Password = "";
 
         //合约
 		ExchangeID = "CFFEX";
@@ -524,7 +524,13 @@ void TradeTest()
 
 int main()
 {
-	//可在Config类中修改用户名、密码、合约等信息
+	//请先在Config类中设置地址、BrokerID、用户名、密码等信息
+	if (Cfg.TradeAddress == "" || Cfg.MarketAddress == "" ||
+		Cfg.UserName == "" || Cfg.Password == "")
+	{
+		std::cout << "请先在Config类中设置地址账户等信息.\n";
+		getchar();
+	}
 
 	MarketTest();
 	TradeTest();
